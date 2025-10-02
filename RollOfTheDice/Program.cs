@@ -10,8 +10,20 @@
     {
         static void Main(string[] args)
         {
+            Roll();
+            Display();
 
             Console.Read();
+        }
+
+        static void Roll()
+        { 
+        
+        }
+
+        static void Display() 
+        {
+        
         }
     }
 }
