@@ -14,10 +14,7 @@
             Roll();
             Display();
 
-            foreach(int count in dice)
-            {
-                Console.Write($"{count}  ");
-            }
+            
             Console.Read();
         }
         private static int[] dice = new int[11];
@@ -89,7 +86,28 @@
 
         static void Display() 
         {
-        
+            string[] header = {"2","3","4","5","6","7","8","9","10","11","12" };
+            string vDivide = "|";
+            int pad = 3;
+            int totalWidth = 12 * (pad + vDivide.Length);
+            string hDivide = new string('-',totalWidth);
+            Console.WriteLine("Roll of the Dice");
+            Console.WriteLine(hDivide);
+            foreach (string letter in header)
+            {
+                Console.Write(letter.PadLeft(pad) + vDivide);
+            }
+            Console.WriteLine();
+            Console.WriteLine(hDivide);
+
+            foreach(int count in dice)
+            {
+                Console.Write($" {count}{vDivide}");
+            }
+            Console.WriteLine();
+            Console.WriteLine(hDivide);
+
         }
+
     }
 }
