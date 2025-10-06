@@ -1,4 +1,6 @@
-﻿namespace RollOfTheDice
+﻿using System.Diagnostics.Metrics;
+
+namespace RollOfTheDice
 {
     //Micah Spencer
     //RCET2265
@@ -88,9 +90,10 @@
         {
             string[] header = {"2","3","4","5","6","7","8","9","10","11","12" };
             string vDivide = "|";
-            int pad = 3;
-            int totalWidth = 12 * (pad + vDivide.Length);
+            int pad = 4;
+            int totalWidth = 11 * (pad + vDivide.Length);
             string hDivide = new string('-',totalWidth);
+            
             Console.WriteLine("Roll of the Dice");
             Console.WriteLine(hDivide);
             foreach (string letter in header)
@@ -100,9 +103,10 @@
             Console.WriteLine();
             Console.WriteLine(hDivide);
 
-            foreach(int count in dice)
+            for(int count = 0; count < 11; count++)
             {
-                Console.Write($" {count}{vDivide}");
+                string total = Convert.ToString(dice[count]);
+                Console.Write(total.PadLeft(pad) + vDivide);
             }
             Console.WriteLine();
             Console.WriteLine(hDivide);
