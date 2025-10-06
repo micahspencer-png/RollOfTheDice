@@ -12,26 +12,28 @@ namespace RollOfTheDice
     {
         static void Main(string[] args)
         {
-            
+            //calls roll and display subroutines
             Roll();
             Display();
-
-            
+            //pause
             Console.Read();
         }
+        //sets up a global variable
         private static int[] dice = new int[11];
         static void Roll()
         {
-
+            //sets up variables to roll dice randomly
             Random Dice1 = new Random();
             Random Dice2 = new Random();
 
+            //rolls and counts dice 1000 times
             for (int i = 0; i < 1000; i++)
             {
                 int roll1 = Dice1.Next(1,7);
                 int roll2 = Dice2.Next(1,7);
                 int total = roll1 + roll2;
                 
+                //totals up each roll and adds a count to the global variable
                 switch (total)
                 {
                     case 2:
@@ -88,14 +90,19 @@ namespace RollOfTheDice
 
         static void Display() 
         {
+            //sets up the display variables
             string[] header = {"2","3","4","5","6","7","8","9","10","11","12" };
             string vDivide = "|";
             int pad = 4;
             int totalWidth = 11 * (pad + vDivide.Length);
             string hDivide = new string('-',totalWidth);
             
-            Console.WriteLine("Roll of the Dice");
+            //sets top of display up
+            Console.WriteLine("                  Roll of the Dice");
+            Console.WriteLine();
             Console.WriteLine(hDivide);
+            
+            //sets the header for each variable
             foreach (string letter in header)
             {
                 Console.Write(letter.PadLeft(pad) + vDivide);
@@ -103,9 +110,13 @@ namespace RollOfTheDice
             Console.WriteLine();
             Console.WriteLine(hDivide);
 
+            //displays the results of the rolls
             for(int count = 0; count < 11; count++)
             {
+                //converts int data from table to string
                 string total = Convert.ToString(dice[count]);
+
+                //sets the data to match up with it's header
                 Console.Write(total.PadLeft(pad) + vDivide);
             }
             Console.WriteLine();
